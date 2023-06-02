@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Press those keys</title>
+        <link rel="stylesheet" href="soundgame.css">
+        <script src="JS/paper-full.js"></script>
+        <script type="text/paperscript" canvas="myCanvas">
+            var circles = [];
+            function onKeyDown(event) {
+                var MaxP = new Point(view.size.width, view.size.height);
+                var randomP = Point.random();
+                var myP = MaxP*randomP;
+                var path = new Path();
+                var myCircle= new Path.Circle(myP, 400);
+                myCircle.fillColor="green";
+                circles.push(myCircle);
+            }
+            function onFrame(event) {
+                for(var i=0;i<circles.length;i++)
+                {
+                    circles[i].fillColor.hue+=1;
+                    circles[i].scale(.9);
+                }
+                }
+            
+        </script>
+    </head>
+    <body>
+        <canvas id="myCanvas" resize></canvas>
+    </body>
+</html>
